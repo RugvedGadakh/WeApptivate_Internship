@@ -1,6 +1,6 @@
 import './App.css';
 import { withProps } from '@udecode/cn';
-import { createPlugins, Plate, RenderAfterEditable, PlateLeaf } from '@udecode/plate-common';
+import { createPlugins, Plate, PlateLeaf } from '@udecode/plate-common';
 import { createParagraphPlugin, ELEMENT_PARAGRAPH } from '@udecode/plate-paragraph';
 import { createHeadingPlugin, ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, ELEMENT_H4, ELEMENT_H5, ELEMENT_H6 } from '@udecode/plate-heading';
 import { createBlockquotePlugin, ELEMENT_BLOCKQUOTE } from '@udecode/plate-block-quote';
@@ -90,7 +90,7 @@ function App() {
       createCaptionPlugin({
         options: {
           pluginKeys: [
-            // ELEMENT_IMAGE, ELEMENT_MEDIA_EMBED
+            ELEMENT_IMAGE, ELEMENT_MEDIA_EMBED
           ]
         }
       }),
@@ -173,7 +173,7 @@ function App() {
               hotkey: "enter",
               query: {
                 start: true,
-                end: true
+                end: true,
                 // allow: KEYS_HEADING,
               },
               relative: true,
