@@ -72,7 +72,7 @@ import { FloatingToolbarButtons } from './components/plate-ui/floating-toolbar-b
 import { withPlaceholder } from './components/plate-ui/placeholder';
 import { withDraggable } from './components/plate-ui/with-draggables';
 import { EmojiCombobox } from './components/plate-ui/emoji-combobox';
-
+import { autoformatRules } from './lib/plate/autoformatRules';
 function App() {
 
   const plugins = createPlugins(
@@ -115,7 +115,7 @@ function App() {
           props: {
             validTypes: [
               ELEMENT_PARAGRAPH
-              // ELEMENT_H1, ELEMENT_H2, ELEMENT_H3
+              ,ELEMENT_H1, ELEMENT_H2, ELEMENT_H3
             ]
           }
         }
@@ -125,7 +125,7 @@ function App() {
           props: {
             validTypes: [
               ELEMENT_PARAGRAPH
-              // ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, ELEMENT_BLOCKQUOTE, ELEMENT_CODE_BLOCK
+              ,ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, ELEMENT_BLOCKQUOTE, ELEMENT_CODE_BLOCK
             ]
           }
         }
@@ -135,7 +135,7 @@ function App() {
           props: {
             validTypes: [
               ELEMENT_PARAGRAPH
-              // ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, ELEMENT_BLOCKQUOTE, ELEMENT_CODE_BLOCK
+              ,ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, ELEMENT_BLOCKQUOTE, ELEMENT_CODE_BLOCK
             ]
           }
         }
@@ -147,7 +147,7 @@ function App() {
             validNodeValues: [1, 1.2, 1.5, 2, 3],
             validTypes: [
               ELEMENT_PARAGRAPH
-              // ELEMENT_H1, ELEMENT_H2, ELEMENT_H3
+              ,ELEMENT_H1, ELEMENT_H2, ELEMENT_H3
             ]
           }
         }
@@ -194,7 +194,7 @@ function App() {
         options: {
           query: {
             allow: [
-              // ELEMENT_IMAGE, ELEMENT_HR
+              ELEMENT_IMAGE, ELEMENT_HR
             ]
           }
         }
@@ -208,7 +208,7 @@ function App() {
               hotkey: "enter",
               query: {
                 allow: [
-                  // ELEMENT_CODE_BLOCK, ELEMENT_BLOCKQUOTE, ELEMENT_TD
+                  ELEMENT_CODE_BLOCK, ELEMENT_BLOCKQUOTE, ELEMENT_TD
                 ]
               }
             }
@@ -222,9 +222,7 @@ function App() {
       createCommentsPlugin(),
       createAutoformatPlugin({
         options: {
-          rules: [
-            // Usage: https://platejs.org/docs/autoformat
-          ],
+          rules: autoformatRules,
           enableUndoOnDelete: true
         }
       }),
@@ -241,45 +239,45 @@ function App() {
       createDeserializeMdPlugin(),
       createJuicePlugin()
     ],
-    // {
-    //   components: withDraggables(
-    //     withPlaceholders({
-    //       [ELEMENT_BLOCKQUOTE]: BlockquoteElement,
-    //       [ELEMENT_CODE_BLOCK]: CodeBlockElement,
-    //       [ELEMENT_CODE_LINE]: CodeLineElement,
-    //       [ELEMENT_CODE_SYNTAX]: CodeSyntaxLeaf,
-    //       // [ELEMENT_EXCALIDRAW]: ExcalidrawElement,
-    //       [ELEMENT_HR]: HrElement,
-    //       [ELEMENT_IMAGE]: ImageElement,
-    //       [ELEMENT_LINK]: LinkElement,
-    //       [ELEMENT_H1]: withProps(HeadingElement, { variant: "h1" }),
-    //       [ELEMENT_H2]: withProps(HeadingElement, { variant: "h2" }),
-    //       [ELEMENT_H3]: withProps(HeadingElement, { variant: "h3" }),
-    //       [ELEMENT_H4]: withProps(HeadingElement, { variant: "h4" }),
-    //       [ELEMENT_H5]: withProps(HeadingElement, { variant: "h5" }),
-    //       [ELEMENT_H6]: withProps(HeadingElement, { variant: "h6" }),
-    //       [ELEMENT_MEDIA_EMBED]: MediaEmbedElement,
-    //       [ELEMENT_MENTION]: MentionElement,
-    //       [ELEMENT_MENTION_INPUT]: MentionInputElement,
-    //       [ELEMENT_PARAGRAPH]: ParagraphElement,
-    //       [ELEMENT_TABLE]: TableElement,
-    //       [ELEMENT_TR]: TableRowElement,
-    //       [ELEMENT_TD]: TableCellElement,
-    //       [ELEMENT_TH]: TableCellHeaderElement,
-    //       [ELEMENT_TODO_LI]: TodoListElement,
-    //       [MARK_BOLD]: withProps(PlateLeaf, { as: "strong" }),
-    //       [MARK_CODE]: CodeLeaf,
-    //       [MARK_COMMENT]: CommentLeaf,
-    //       [MARK_HIGHLIGHT]: HighlightLeaf,
-    //       [MARK_ITALIC]: withProps(PlateLeaf, { as: "em" }),
-    //       [MARK_KBD]: KbdLeaf,
-    //       [MARK_STRIKETHROUGH]: withProps(PlateLeaf, { as: "s" }),
-    //       [MARK_SUBSCRIPT]: withProps(PlateLeaf, { as: "sub" }),
-    //       [MARK_SUPERSCRIPT]: withProps(PlateLeaf, { as: "sup" }),
-    //       [MARK_UNDERLINE]: withProps(PlateLeaf, { as: "u" })
-    //     })
-    //   )
-    // }
+    {
+      components: withDraggable(
+        withPlaceholder({
+          [ELEMENT_BLOCKQUOTE]: BlockquoteElement,
+          [ELEMENT_CODE_BLOCK]: CodeBlockElement,
+          [ELEMENT_CODE_LINE]: CodeLineElement,
+          [ELEMENT_CODE_SYNTAX]: CodeSyntaxLeaf,
+          // [ELEMENT_EXCALIDRAW]: ExcalidrawElement,
+          [ELEMENT_HR]: HrElement,
+          [ELEMENT_IMAGE]: ImageElement,
+          [ELEMENT_LINK]: LinkElement,
+          [ELEMENT_H1]: withProps(HeadingElement, { variant: "h1" }),
+          [ELEMENT_H2]: withProps(HeadingElement, { variant: "h2" }),
+          [ELEMENT_H3]: withProps(HeadingElement, { variant: "h3" }),
+          [ELEMENT_H4]: withProps(HeadingElement, { variant: "h4" }),
+          [ELEMENT_H5]: withProps(HeadingElement, { variant: "h5" }),
+          [ELEMENT_H6]: withProps(HeadingElement, { variant: "h6" }),
+          [ELEMENT_MEDIA_EMBED]: MediaEmbedElement,
+          [ELEMENT_MENTION]: MentionElement,
+          [ELEMENT_MENTION_INPUT]: MentionInputElement,
+          [ELEMENT_PARAGRAPH]: ParagraphElement,
+          [ELEMENT_TABLE]: TableElement,
+          [ELEMENT_TR]: TableRowElement,
+          [ELEMENT_TD]: TableCellElement,
+          [ELEMENT_TH]: TableCellHeaderElement,
+          [ELEMENT_TODO_LI]: TodoListElement,
+          [MARK_BOLD]: withProps(PlateLeaf, { as: "strong" }),
+          [MARK_CODE]: CodeLeaf,
+          [MARK_COMMENT]: CommentLeaf,
+          [MARK_HIGHLIGHT]: HighlightLeaf,
+          [MARK_ITALIC]: withProps(PlateLeaf, { as: "em" }),
+          [MARK_KBD]: KbdLeaf,
+          [MARK_STRIKETHROUGH]: withProps(PlateLeaf, { as: "s" }),
+          [MARK_SUBSCRIPT]: withProps(PlateLeaf, { as: "sub" }),
+          [MARK_SUPERSCRIPT]: withProps(PlateLeaf, { as: "sup" }),
+          [MARK_UNDERLINE]: withProps(PlateLeaf, { as: "u" })
+        })
+      )
+    }
 
 
   )
@@ -287,7 +285,7 @@ function App() {
   const initialValue = [
     {
       id: '1',
-      type: 'p',
+      // type: 'p',
       children: [{ text: 'Hello, World!' }],
     },
   ];
